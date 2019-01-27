@@ -32,3 +32,92 @@ Step 3 : Merge new branch in master branch
 Step 4 : Delete branch
  git branch -d “branch name” — delete from local
  git push origin —delete “branch name” — delete from remote
+
+
+///////////git remote .........
+
+Viewing git remote configurations
+git remote
+List the remote connections you have to other repositories.
+
+git remote -v
+Same as the above command, but include the URL of each connection.
+
+Creating and modifying git remote configurations
+The git remote command is also a convenience or 'helper' method for modifying a repo's ./.git/config file. The commands presented below let you manage connections with other repositories. The following commands will modify the repo's /.git/config file. The result of the following commands can also be achieved by directly editing the ./.git/config file with a text editor.
+
+git remote add <name> <url>
+Create a new connection to a remote repository. After adding a remote, you’ll be able to use <name> as a convenient shortcut for <url> in other Git commands.
+
+git remote rm <name>
+Remove the connection to the remote repository called <name>.
+
+git remote rename <old-name> <new-name>
+Rename a remote connection from <old-name> to <new-name>.
+
+GET-URL <NAME>
+Outputs the URLs for a remote record.
+
+Accepts --push, push URLs are queried rather than fetch URLs.
+
+With --all, all URLs for the remote will be listed.
+
+SHOW <NAME>
+Outputs high-level information about the remote <NAME>.
+
+PRUNE <NAME>
+Deletes any local branches for <NAME> that are not present on the remote repository.
+
+Accepts a --dry-run option which will list what branches are set to be pruned, but will not actually prune them.
+
+
+
+////////////git fetch.........
+
+Git fetch commands and options
+git fetch <remote>
+Fetch all of the branches from the repository. This also downloads all of the required commits and files from the other repository.
+
+git fetch <remote> <branch>
+Same as the above command, but only fetch the specified branch.
+
+git fetch --all
+A power move which fetches all registered remotes and their branches:
+
+git fetch --dry-run
+The --dry-run option will perform a demo run of the command. I will output examples of actions it will take during the fetch but not apply them.
+
+
+
+//////////git push...........
+
+Git push usage
+git push <remote> <branch>
+Push the specified branch to <remote>, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won’t let you push when it results in a non-fast-forward merge in the destination repository.
+
+git push <remote> --force
+Same as the above command, but force the push even if it results in a non-fast-forward merge. Do not use the --force flag unless you’re absolutely sure you know what you’re doing.
+
+git push <remote> --all
+Push all of your local branches to the specified remote.
+
+git push <remote> --tags
+Tags are not automatically pushed when you push a branch or use the --all option. The --tags flag sends all of your local tags to the remote repository.
+
+
+
+
+
+////////////git pull...............
+Common Options
+git pull <remote>
+Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as git fetch <remote> followed by git merge origin/<current-branch>.
+
+git pull --no-commit <remote>
+Similar to the default invocation, fetches the remote content but does not create a new merge commit.
+
+git pull --rebase <remote>
+Same as the previous pull Instead of using git merge to integrate the remote branch with the local one, use git rebase.
+
+git pull --verbose
+Gives verbose output during a pull which displays the content being downloaded and the merge details.
